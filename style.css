@@ -1,0 +1,278 @@
+/* 
+   貓咪藍色主題樣式表 (style.css) 
+   設計目標：現代深藍色調、貓咪元素與高級質感
+*/
+
+:root {
+    --primary-blue: #2c3e50;
+    --light-blue: #3498db;
+    --deep-blue: #1a252f;
+    --silver: #bdc3c7;
+    --silver-light: #ecf0f1;
+    --paw-color: rgba(52, 152, 219, 0.2);
+    --bg-color: #f0f4f8;
+    --text-color: #2c3e50;
+    --glass-bg: rgba(255, 255, 255, 0.8);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle, var(--paw-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2.5rem;
+    text-align: center;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(44, 62, 80, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 貓咪裝飾 */
+.cat-deco {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#mascot {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+header h1 {
+    font-size: 2.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin-bottom: 2.5rem;
+}
+
+/* 筊杯展示區域 */
+.bwa-bwei-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 3rem;
+    perspective: 1000px;
+    position: relative;
+}
+
+.paw-mark {
+    font-size: 2rem;
+    color: var(--paw-color);
+    position: absolute;
+    opacity: 0.5;
+}
+
+.paw-mark.left {
+    left: 10%;
+    top: -20px;
+    transform: rotate(-15deg);
+}
+
+.paw-mark.right {
+    right: 10%;
+    bottom: -20px;
+    transform: rotate(15deg);
+}
+
+/* 筊杯組件核心 - 改為藍色質感 */
+.block {
+    width: 65px;
+    height: 110px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.block-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px 50px 15px 15px;
+    backface-visibility: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 平面 (改為淺銀藍色) */
+.block-inner.flat {
+    background: linear-gradient(135deg, #fdfdfd, #e6eff7);
+    border: 2px solid var(--light-blue);
+    transform: rotateY(0deg);
+}
+
+/* 凸面 (改為深藍色質感) */
+.block-inner.curved {
+    background: linear-gradient(135deg, var(--light-blue), var(--primary-blue));
+    transform: rotateY(180deg);
+}
+
+.block.is-curved-up {
+    transform: rotateY(180deg);
+}
+
+@keyframes tossAnimation {
+    0% {
+        transform: translateY(0) rotate(0) scale(1);
+    }
+
+    30% {
+        transform: translateY(-180px) rotateX(720deg) rotateZ(360deg) scale(1.3);
+    }
+
+    100% {
+        transform: translateY(0) rotateX(0) rotateZ(0) scale(1);
+    }
+}
+
+.block.tossing {
+    animation: tossAnimation 0.8s ease-out;
+}
+
+/* 按鈕與文字區域 */
+.result-text {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    min-height: 2.5rem;
+}
+
+.toss-btn {
+    padding: 1.2rem 3.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, var(--light-blue), var(--primary-blue));
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    border: 3px solid white;
+}
+
+.toss-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(52, 152, 219, 0.5);
+}
+
+.toss-btn:active {
+    transform: translateY(1px);
+}
+
+.toss-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* 歷史紀錄區域 */
+.history-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8fbfe;
+    border-radius: 20px;
+    border: 1px dashed var(--light-blue);
+}
+
+.history-section h2 {
+    font-size: 1.1rem;
+    color: var(--light-blue);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.history-list {
+    list-style: none;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0.5rem;
+    border-bottom: 1px solid #eef2f7;
+    font-size: 0.9rem;
+}
+
+.history-res-tag {
+    font-weight: bold;
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+}
+
+.res-聖筊 {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.res-笑筊 {
+    background: #fff8e1;
+    color: #fbc02d;
+}
+
+.res-陰筊 {
+    background: #eceff1;
+    color: #455a64;
+}
+
+footer {
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: #bdc3c7;
+}
+
+/* 捲軸美化 */
+.history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: var(--silver);
+    border-radius: 10px;
+}

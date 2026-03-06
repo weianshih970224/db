@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓咪開運擲筊 - 讓開運貓咪為您的祈求加持</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Google Fonts: Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container theme-cat">
+        <header>
+            <div class="cat-deco">
+                <img src="lucky_cat.png" alt="Lucky Cat" id="mascot">
+            </div>
+            <h1>貓咪開運擲筊</h1>
+            <p class="subtitle">讓開運貓咪為您的祈求加持</p>
+        </header>
+
+        <main>
+            <!-- 筊杯顯示區域 (加上貓咪腳印裝飾) -->
+            <div class="bwa-bwei-stage">
+                <div class="paw-mark left">🐾</div>
+                <div id="left-block" class="block">
+                    <div class="block-inner flat"></div>
+                    <div class="block-inner curved"></div>
+                </div>
+                <div id="right-block" class="block">
+                    <div class="block-inner flat"></div>
+                    <div class="block-inner curved"></div>
+                </div>
+                <div class="paw-mark right">🐾</div>
+            </div>
+
+            <!-- 結果顯示與操作按鈕 -->
+            <div class="action-area">
+                <div id="result-text" class="result-text">點擊下方按鈕開始擲筊</div>
+                <button id="toss-btn" class="toss-btn">開始擲筊</button>
+            </div>
+
+            <!-- 歷史紀錄 -->
+            <section class="history-section">
+                <h2>擲筊紀錄</h2>
+                <ul id="history-list" class="history-list">
+                    <!-- 紀錄會動態插入此處 -->
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 貓咪擲筊助理 - 祈福求平安</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
